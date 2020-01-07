@@ -4,12 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,12 +22,13 @@ public class mainMenu extends JPanel implements ActionListener {
 	private JButton store = new JButton("STORE");
 	
 	private int call;
-	
 	public mainMenu() {
+		
+		
 		try {                
 	         background = ImageIO.read(new File("Images/Game Start.png"));
 	       } catch (IOException e) {
-	    	   System.out.print("tEST");
+	    	   System.out.print("Image Not Available");
 	    	   
 	 
 	       }
@@ -72,18 +71,25 @@ public class mainMenu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == start) {
 			System.out.print("Start pressed");
-			//Gameplay gameplay = new Gameplay()score
+			call = 1;
+			
 		}
 		else if (e.getSource() == help) {
 			System.out.print("help pressed");
+			call = 2;
 		}
+		
 		
 		else if (e.getSource() == store) {
 			System.out.print("store pressed");
+			call = 3;
 		}
 		
 	}
-
+	
+	public int getCall() {
+		return call;
+	}
 }
 
 
