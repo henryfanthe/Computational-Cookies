@@ -1,5 +1,3 @@
-package computationalcookies;
-
 import java.awt.Container;
 
 import javax.swing.JFrame;
@@ -18,6 +16,7 @@ public class Game {
 	public static void main(String[] args) {
 		
 		mainMenu menu = new mainMenu() ;
+		Help help = new Help();
 		//GamePlay game = new Gameplay(score, pinaColada, ramtin);
 		//StoreFront store = new StoreFront(score, pinaColada, ramtin);
 		//EndPage end = new EndPage();
@@ -31,11 +30,22 @@ public class Game {
 		GameWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 
-		while (call < 4) {
-			
-			if (call == 0) {
+		while (true) {
+			call = menu.getCall();
+			System.out.println(call);
+			while (call == 0) {
+				c.removeAll();
 				c.add(menu);
-				menu.getCall();
+				c.revalidate();
+				call = menu.getCall();
+				if (call == 0) {
+					System.out.println("Bye");
+					continue;
+				}
+				else {
+					System.out.println("HI");
+					break;
+				}
 			}
 			/*
 							
@@ -43,14 +53,24 @@ public class Game {
 				c.repaint();
 				c.add(game);	  
 			}
-	
-			else if (call == 2) {
-				c.repaint();
-				c.add(store);
+	*/
+			while (call == 2) {
+				c.removeAll();
+				c.add(help);
+				c.revalidate();
+				call = Help.getCall();
+				if (call == 2) {
+					System.out.println("Hello");
+					continue;
+				}
+				else {
+					System.out.println("Good Bye");
+					break;
+				}
 			}
+			/*
 			else if (call == 3) {
-				c.repaint();
-				c.add(end);
+				c.add(store);
 			}
 			*/
 			
@@ -59,4 +79,3 @@ public class Game {
 	}
 			
 }
-
