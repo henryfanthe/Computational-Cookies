@@ -1,7 +1,7 @@
 
 public class CheckPieces {
 
-	public static boolean checkHorizontal(double[][] board) {
+	public static boolean checkHorizontal(int[][] board) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length - 2; j++) {
 				if (board[i][j] == board[i][j + 1] && 
@@ -17,7 +17,7 @@ public class CheckPieces {
 		return false;
 	}
 	
-	public static boolean checkVertical(double[][] board) {
+	public static boolean checkVertical(int[][] board) {
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length; j++) {
 				if (board[i][j] == board[i+ 1][j] && 
@@ -32,7 +32,7 @@ public class CheckPieces {
 		return false;
 	}
 	
-	public static boolean checkRightDiagonal(double[][] board) {
+	public static boolean checkRightDiagonal(int[][] board) {
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length-2; j++) {
 				if (board[i][j] == board[i+ 1][j + 1] && 
@@ -47,7 +47,7 @@ public class CheckPieces {
 		return false;
 	}
 	
-	public static boolean checkLeftDiagonal(double[][] board) {
+	public static boolean checkLeftDiagonal(int[][] board) {
 		for (int i = 0; i < board.length - 2; i++) {
 			for (int j = 2; j < board[0].length; j++) {
 				if (board[i][j] == board[i + 1][j - 1] && 
@@ -62,11 +62,11 @@ public class CheckPieces {
 		return false;
 	}
 	
-	public static double[][] Horizontal(double[][] board) {
+	public static int[][] Horizontal(int[][] board) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length - 2; j++) {
-				if (board[i][j] == board[i][j + 1] && 
-						board[i][j] == board[i][j + 2]) {
+				if ((int)board[i][j] == (int)board[i][j + 1] && 
+						(int)board[i][j] == (int)board[i][j + 2]) {
 					
 					return movePiecesHorizontal(i, j, board);
 				}
@@ -78,7 +78,7 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] Vertical(double[][] board) {
+	public static int[][] Vertical(int[][] board) {
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length; j++) {
 				if (board[i][j] == board[i+ 1][j] && 
@@ -93,7 +93,7 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] RightDiagonal(double[][] board) {
+	public static int[][] RightDiagonal(int[][] board) {
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length-2; j++) {
 				if (board[i][j] == board[i+ 1][j + 1] && 
@@ -108,7 +108,7 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] LeftDiagonal(double[][] board) {
+	public static int[][] LeftDiagonal(int[][] board) {
 		for (int i = 0; i < board.length - 2; i++) {
 			for (int j = 2; j < board[0].length; j++) {
 				if (board[i][j] == board[i + 1][j - 1] && 
@@ -123,25 +123,18 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] movePiecesHorizontal(int row, int col, double[][] board){
+	public static int[][] movePiecesHorizontal(int row, int col, int[][] board){
 		System.out.println("HI");
-		try {
-			if (board[row][col] == board[row][col + 3]) {
-				board[row][col] += .1;
-			}
-		}
-		catch(Exception ArrayIndexOutOfBounds) {
-		}
 		for (int j = 0; j < 3; j++) {
 			for (int i = row; i >= 1; i --) {
-				board[i][col + j] = board[i - 1][col + j];
+				board[i][col + j] = (int)board[i - 1][col + j];
 			}
 			board[0][col + j] = MainThing.genNum();
 		}
 		return board;
 	}
 	
-	public static double[][] movePiecesVertical(int row, int col, double[][] board){
+	public static int[][] movePiecesVertical(int row, int col, int[][] board){
 		System.out.println("HI");
 		for (int j = 0; j < 3; j++) {
 			for(int i = row + 2; i >= 1; i--) {
@@ -152,9 +145,8 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] movePiecesRightDiagonal(int row, int col, double[][] board){
+	public static int[][] movePiecesRightDiagonal(int row, int col, int[][] board){
 		System.out.println("HI");
-		
 		for (int j = 0; j < 3; j++) {
 			for (int i = row + j; i >= 1; i--) {
 				board[i][col + j] = board[i - 1][col + j];
@@ -165,7 +157,7 @@ public class CheckPieces {
 		return board;
 	}
 	
-	public static double[][] movePiecesLeftDiagonal(int row, int col, double[][] board){
+	public static int[][] movePiecesLeftDiagonal(int row, int col, int[][] board){
 		System.out.println("HI");
 		for (int j = 0; j < 3; j++) {
 			for (int i = row + j; i >= 1; i--) {
@@ -175,6 +167,6 @@ public class CheckPieces {
 		}
 		return board;
 	}
-	
+
 }
 
