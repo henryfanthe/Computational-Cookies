@@ -57,7 +57,7 @@ public class CardPanelStart extends JFrame {
   
         // Initialization of object  
         // "jp3" of CardLayout class. 
-        JPanel Game = new JPanel(); 
+        GamePlay Game = new GamePlay(1, 1, 1);
 
         // Adding the cardPanel on "jp1" 
         cardPanel.add(menu, "1"); 
