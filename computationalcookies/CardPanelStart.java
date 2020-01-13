@@ -1,4 +1,3 @@
-package computationalcookies;
 /*
  * Name: Henry and Jawad
  * Date: Jan 11, 2020
@@ -164,6 +163,8 @@ public class CardPanelStart extends JFrame {
                     Cookies[][] board = Game.getGameBoard();
                     save.Save(board);
                     
+                    int score = Game.getScore();
+                    scoreSave.Save(score);
                     
                     
                     System.exit(0);

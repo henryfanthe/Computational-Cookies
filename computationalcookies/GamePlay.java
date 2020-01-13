@@ -1,4 +1,3 @@
-package computationalcookies;
 /*
  * Name: Henry and Jawad
  * Date: Jan 12, 2020
@@ -41,7 +40,8 @@ public class GamePlay extends JPanel implements MouseListener {
 	//click counter
 	private int counter = 0;
 	//score counter
-	private static int score = 0;
+	private static int score = setScore();
+	}
 	//Powerup Values
 	private int ramtinnum;
 	private int coladanum;
@@ -323,6 +323,21 @@ public class GamePlay extends JPanel implements MouseListener {
     			
     	}
 	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	private int setScore() {
+		int score = 0;
+		try {
+			score = scoreSave.Retrive();
+		}
+		catch (Exception e) {
+			score = 0;
+		}
+	}
+	
 	/*
 	 * This method makes a 2d array of cookies
 	 * Pre: none
