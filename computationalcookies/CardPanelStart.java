@@ -1,3 +1,4 @@
+package computationalcookies;
 /*
  * Name: Henry and Jawad
  * Date: Jan 11, 2020
@@ -160,13 +161,12 @@ public class CardPanelStart extends JFrame {
                     currentCard = 4; 
   
                     // show the value of currentcard 
+                    
+                    //Saving the gameboard before the program quits
                     Cookies[][] board = Game.getGameBoard();
                     save.Save(board);
                     
-                    int score = Game.getScore();
-                    scoreSave.Save(score);
-                    
-                    
+                    //Ending the task and clsoing the game
                     System.exit(0);
                 } 
             } 
@@ -182,6 +182,7 @@ public class CardPanelStart extends JFrame {
     // Main Method 
     public static void main(String[] args) 
     { 
+    	//Declaring the who audio objects
     	PlaySound player = new PlaySound();
     	Bg back = new Bg();
     
@@ -197,8 +198,10 @@ public class CardPanelStart extends JFrame {
         // Function to set vivibility of JFrame. 
         cl.setVisible(true); 
 
-
+        //Getting the welcome audio snippet to play
 		player.play("Sounds/WelcomeBack.wav");
+		
+		//starting the background music
 		back.play("Sounds/CompCookiesbg.wav");
     } 
 } 
