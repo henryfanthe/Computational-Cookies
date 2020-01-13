@@ -57,7 +57,7 @@ public class CardPanelStart extends JFrame {
   
         // Initialization of object  
         // "jp3" of CardLayout class. 
-        GamePlay Game = new GamePlay(1, 1, 1);
+        GamePlay Game = new GamePlay(1, 1);
 
         // Adding the cardPanel on "jp1" 
         cardPanel.add(menu, "1"); 
@@ -86,19 +86,19 @@ public class CardPanelStart extends JFrame {
         // Initialization of object  
         // "lastbtn" of JButton class. 
         JButton QuitBtn = new JButton("Quit"); 
-  
-        // Adding JButton "firstbtn" on JFrame. 
+        
+        // Adding JButton "Menubtn" on JFrame. 
         buttonPanel.add(MenuBtn); 
   
         // Adding JButton "nextbtn" on JFrame. 
         buttonPanel.add(HelpBtn); 
   
-        // Adding JButton "previousbtn" on JFrame. 
+        // Adding JButton "Gamebtn" on JFrame. 
         buttonPanel.add(GameBtn); 
   
-        // Adding JButton "lastbtn" on JFrame. 
+        // Adding JButton "Quitbtn" on JFrame. 
         buttonPanel.add(QuitBtn); 
-  
+        
         // add firstbtn in ActionListener 
         MenuBtn.addActionListener(new ActionListener()  
         { 

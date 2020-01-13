@@ -206,21 +206,23 @@ public class Cookies{
 		 return this.type + "";
 	 }
 	 
-	
-	public static Cookies[][] changePieces(Cookies[][] board, int[][] cookies){
-		int xloc1 = cookies[0][0];
-		int yloc1 = cookies[0][1];
-		int xloc2 = cookies[1][0];
-		int yloc2 = cookies[1][1];
-		Cookies temp = board[xloc1][yloc1];
-		board[yloc1][xloc1] = board[yloc2][xloc2];
-		board[yloc2][xloc2] = temp;
-		return board;
-	}
-	
-	public static Cookies[][] changePiece(Cookies[][] board, int[][] cookies) {
+	 public static Cookies[][] changePieces(Cookies[][] board, Cookies cookie1, Cookies cookie2){
+			//switches the board
+			int temp = cookie1.getType();
+			board[cookie1.getArrayloc1()][cookie1.getArrayloc2()].setType(cookie2.getType());
+			board[cookie2.getArrayloc1()][cookie2.getArrayloc2()].setType(temp);
+			//returns the board
+			return board;
+		}
+		
+		/*
+		 * Method to switch the places of two cookies in the board
+		 * Pre: loaction of the two cookies is in the cookie array
+		 * Post: returns the board after the cookies has been switched
+		 */
+		public static Cookies[][] boardChangePiece(Cookies[][] board, Cookies cookie1, Cookies cookie2) {
 			//switches the two cookies
-			board = changePieces(board,cookies);
+			board = changePieces(board, cookie1, cookie2);
 			//checks if the two switched cookies make a triple
 			if (CheckPieces.checkHorizontal(board) || CheckPieces.checkVertical(board)) {
 				//returns the new board if it does make a triple
@@ -228,24 +230,27 @@ public class Cookies{
 			}
 			else {
 				//changes the board back if it doesn't
-				board = changePieces(board, cookies);
+				board = changePieces(board, cookie1, cookie2);
 				return board;
 			}
-	}
-	public static int[][] makeCookieList(int[][] cookie,Cookies cookie1, Cookies cookie2){
-		
-		System.out.println("xcord 1");
-		cookie[0][0] = cookie1.getArrayloc1();
+		}
+		/*
+		 * Method for the location of the cookies to be switched
+		 * Pre: none
+		 * Post: return a 2d array with the location of two cookies to be switched
+		 */
+		public static int[][] makeCookieList(int[][] cookie, Cookies cookie1, Cookies cookie2){
+			cookie[0][0] = cookie1.getArrayloc1();
 
-		System.out.println("ycord 1");
-		cookie[0][1] = cookie1.getArrayloc2();
-		
-		System.out.println("xcord 2");
-		cookie[1][0] = cookie2.getArrayloc1();
+			System.out.println("ycord 1");
+			cookie[0][1] = cookie1.getArrayloc2();
+			
+			System.out.println("xcord 2");
+			cookie[1][0] = cookie2.getArrayloc1();
 
-		System.out.println("ycord 2");
-		cookie[1][1] = cookie2.getArrayloc2();
-		
-		return cookie;
-	}
+			System.out.println("ycord 2");
+			cookie[1][1] = cookie2.getArrayloc2();
+			
+			return cookie;
+		}
 }

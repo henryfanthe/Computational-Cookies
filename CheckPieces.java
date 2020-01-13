@@ -11,12 +11,10 @@ public class CheckPieces {
 	 * 		 values in a row
 	 */
 	public static boolean checkHorizontal(Cookies[][] board) {
-		System.out.println("HI");
 		//nested loop to check each needed place
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length - 2; j++) {
 				//checks for three pieces in a row
-				System.out.println(board[i][j].getType() + "+" + board[i][j + 1].getType() + "+" + board[i][j + 2].getType());
 				if (board[i][j].getType() == board[i][j + 1].getType() && 
 						board[i][j].getType() == board[i][j + 2].getType()) {
 					//returns true if there is a triple
@@ -39,7 +37,6 @@ public class CheckPieces {
 	 * 		 values in a row
 	 */
 	public static boolean checkVertical(Cookies[][] board) {
-		System.out.println("Bye");
 		//nested loop to check each needed place
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length; j++) {
@@ -101,7 +98,6 @@ public class CheckPieces {
 	 * 		 moved down into their place
 	 */
 	public static Cookies[][] Horizontal(Cookies[][] board) {
-		System.out.println("Ni Hou");
 		//nested loop to check each needed place
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length - 2; j++) {
@@ -128,7 +124,6 @@ public class CheckPieces {
 	 * 		 moved down into their place
 	 */
 	public static Cookies[][] Vertical(Cookies[][] board) {
-		System.out.println("Good Bye");
 		//nested loop to check each needed place
 		for (int i = 0; i < board.length-2; i++) {
 			for (int j = 0; j < board[0].length; j++) {
@@ -203,6 +198,7 @@ public class CheckPieces {
 			board[0][col + j].setType((int)(Math.random()*5) + 1);
 			board[0][col + j].getImage();
 		}
+		GamePlay.addScore100();
 		//sends back the new board
 		return board;
 	}
@@ -220,12 +216,13 @@ public class CheckPieces {
 			for(int i = row + 2; i >= 1; i--) {
 				//moves the number down one place
 				board[i][col].setType(board[i - 1][col].getType());
-				board[i][col + j].getImage();
+				board[i][col].getImage();
 			}
 			//generates a new random number at the top
 			board[0][col].setType((int)(Math.random()*5) + 1);
-			board[0][col + j].getImage();
+			board[0][col].getImage();
 		}
+		GamePlay.addScore100();
 		//sends back the new board
 		return board;
 	}
@@ -264,18 +261,30 @@ public class CheckPieces {
 	 * Pre: none
 	 * Post: runs through checking for and replacing triples until there are none left
 	 */
+	
+	public static Cookies[][] movePiecesSingle(int row, int col, Cookies[][] board){
+
+		//repeats until it reaches the "Top"
+		for(int i = col; i >= 1; i--) {
+			//moves the number down one place
+			board[row][i].setType(board[row][i - 1].getType());
+			board[row][i].getImage();
+		}
+		//generates a new random number at the top
+		board[row][0].setType((int)(Math.random()*5) + 1);
+		board[row][0].getImage();
+	//sends back the new board
+		return board;
+	}
 	public static Cookies[][] testBoard(Cookies[][]board){
 		boolean goAgain = true;
 		while (goAgain) {
-			System.out.println("Hello");
 			goAgain = false;
 			if (CheckPieces.checkHorizontal(board)) {
-				System.out.println("1");
 				board = CheckPieces.Horizontal(board);
 				goAgain = true;
 			}
 			if (CheckPieces.checkVertical(board)) {
-				System.out.println("2");
 				board = CheckPieces.Vertical(board);
 				goAgain = true;
 			}

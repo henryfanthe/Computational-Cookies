@@ -18,6 +18,12 @@ public class Help extends JPanel {
 	private JLabel howToPlay = new JLabel("Click on one cookie then click on another next to it to change their places");
 	private JLabel howToPlay2 = new JLabel("Combine three in a row to clear them and get points");
 	private JLabel howToPlay3 = new JLabel("Get as many points as you can");
+	
+	private JLabel PinaColadalb1 = new JLabel("Click on a type of cookie to get rid of");
+	private JLabel PinaColadalb2 = new JLabel("Click on the Pina Colada Button");
+	
+	private JLabel RamtinPoplb1 = new JLabel("Click on a cookie that you want to get rid of");
+	private JLabel RamtinPoplb2 = new JLabel("Click on the Ramtin Pop Button");
 	//creates a variable for the background
 	private BufferedImage background;
 	
@@ -40,11 +46,19 @@ public class Help extends JPanel {
 		howToPlay.setAlignmentX(CENTER_ALIGNMENT);
 		howToPlay2.setAlignmentX(CENTER_ALIGNMENT);
 		howToPlay3.setAlignmentX(CENTER_ALIGNMENT);
+		PinaColadalb1.setAlignmentX(CENTER_ALIGNMENT);
+		PinaColadalb2.setAlignmentX(CENTER_ALIGNMENT);
+		RamtinPoplb1.setAlignmentX(CENTER_ALIGNMENT);
+		RamtinPoplb2.setAlignmentX(CENTER_ALIGNMENT);
 		//adds the text to the JFrame
 		this.add(title);
 		this.add(howToPlay);
 		this.add(howToPlay2);
 		this.add(howToPlay3);
+		this.add(PinaColadalb1);
+		this.add(PinaColadalb2);
+		this.add(RamtinPoplb1);
+		this.add(RamtinPoplb1);
 	}
 	
 @Override
