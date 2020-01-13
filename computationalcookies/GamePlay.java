@@ -1,3 +1,4 @@
+package computationalcookies;
 /*
  * Name: Henry and Jawad
  * Date: Jan 12, 2020
@@ -40,8 +41,7 @@ public class GamePlay extends JPanel implements MouseListener {
 	//click counter
 	private int counter = 0;
 	//score counter
-	private static int score = setScore();
-	}
+	private static int score = 0;
 	//Powerup Values
 	private int ramtinnum;
 	private int coladanum;
@@ -89,6 +89,7 @@ public class GamePlay extends JPanel implements MouseListener {
 		this.add(numRamtin);
 		this.add(ScoreLabel);
 		
+		//Setting the location of the varois components
 		board.setLayout(null);
 		PinaColadabtn.setSize(100,100);
 		RamtinPopbtn.setSize(100,100);
@@ -98,6 +99,7 @@ public class GamePlay extends JPanel implements MouseListener {
 		numRamtin.setSize(28, 28);
 		ScoreLabel.setSize(100,40);
 		
+		//Seting up the buttons for the powerups
 		numPina.setForeground(Color.WHITE);
 		numPina.setBackground(Color.BLACK);
 		numPina.setOpaque(true);
@@ -106,7 +108,7 @@ public class GamePlay extends JPanel implements MouseListener {
 		numRamtin.setBackground(Color.BLACK);
 		numRamtin.setOpaque(true);
 		
-		
+		//Setting up the locations for all the various compents
 		PinaColadabtn.setLocation(60,500);
 		RamtinPopbtn.setLocation(60,375);
 		morePina.setLocation(180, 565);
@@ -114,6 +116,7 @@ public class GamePlay extends JPanel implements MouseListener {
 		numPina.setLocation(180, 500);
 		numRamtin.setLocation(180, 385);
 		ScoreLabel.setLocation(100, 260);
+		
 		
 		ScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 		
@@ -323,21 +326,6 @@ public class GamePlay extends JPanel implements MouseListener {
     			
     	}
 	}
-	
-	public int getScore() {
-		return score;
-	}
-	
-	private int setScore() {
-		int score = 0;
-		try {
-			score = scoreSave.Retrive();
-		}
-		catch (Exception e) {
-			score = 0;
-		}
-	}
-	
 	/*
 	 * This method makes a 2d array of cookies
 	 * Pre: none

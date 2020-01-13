@@ -7,40 +7,54 @@ import java.awt.Rectangle;
 import java.util.Scanner;
 
 public class Cookies{
+	//Decalring the various Varibles
 	
+	//Soundplayer
 	private static PlaySound player = new PlaySound();
+	
+	//Imageicones for the cookies
 	private ImageIcon ii;
 	private Image image;
 	
+	//Selected cookiespng
 	private ImageIcon selectedii;
 	private Image selectedCookie;
 	
 	private Rectangle rect;
 
-	
+	//Declaring the various varaibles
+	//The type of cookie 
 	private int type = 0;
-	private int state = 0;
+	
+	//Decalrinbg the position varible
 	private int xPos = 0;
 	private int yPos = 0;
+	
+	//Declaring the arraylocation for the stuff
 	private int arrayloc1 = 0;
 	private int arrayloc2 = 0;
-	private int moveX = 0;
-	private int moveY = 0;
+	
+	//Determining if its selected or not
 	private boolean selected = false;
-
+	
+	/*
+	 * This creates a cookies, by taking in an x and y
+	 */
 	public Cookies(int x,int y) {
 		arrayloc1= x;
 		arrayloc2 = y;
 	
 		this.randomType();
 		
+		//Getting the location of the cookie on the panel, thorugh the array location
 		xPos = (arrayloc1 * 75) + 300;
 		yPos = (arrayloc2 * 75);
-				
+		
+		//finiding the selected cookie image
 		selectedii = new ImageIcon("Images/Selected Cookie.png");
 		selectedCookie = selectedii.getImage(); 
 
-		
+		//assingin cookie image based on its type
 		if (type == 0) {
 			ii = new ImageIcon("Images/Green Cookie.png");
 	        image = ii.getImage(); 
@@ -67,6 +81,11 @@ public class Cookies{
 		}
 	}
 	
+	/*
+	 * This method is used to update the image based on if its selected or not
+	 * Pre: non, images should be avaible
+	 * Post: the image of the cookie will be updated
+	 */
 	public Image getImage() {
 		if (selected == false) {
 			if (type == 0) {
@@ -100,10 +119,8 @@ public class Cookies{
 	}
 	
 	
-	public Rectangle makeRect() {
-		return rect;
-	}
-	
+
+	//Setting and getter for it being selected
 	public boolean getSelected() {
 		return selected;
 	}
@@ -112,22 +129,7 @@ public class Cookies{
 		this.selected = picked;
 	}
 	
-	public int getMoveX() {
-		return moveX;
-	}
-
-	public void setMoveX(int moveX) {
-		this.moveX = moveX;
-	}
-
-	public int getMoveY() {
-		return moveY;
-	}
-
-	public void setMoveY(int moveY) {
-		this.moveY = moveY;
-	}
-	
+	//setters and getter for is the array locations
 	public int getArrayloc1() {
 		return arrayloc1;
 	}
@@ -143,7 +145,7 @@ public class Cookies{
 		this.arrayloc2 = arrayloc2;
 	}
 
-
+	//Setters adn getter for the type
 	public int getType() {
 		return type;
 	}
@@ -155,15 +157,8 @@ public class Cookies{
 	public void randomType() {
 		this.type = (int)(Math.random()*5) + 1;
 	}
-
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
+	
+	//getters adn getter for the x and y positions
 	public int getxPos() {
 		return xPos;
 	}
@@ -180,21 +175,8 @@ public class Cookies{
 		this.yPos = yPos;
 	}
 	
-
-	public void switchValues(Cookies chip) {
-		int temparrayloc1 = this.arrayloc1;
-		int temparrayloc2 = this.arrayloc2;
-		
-
-		this.arrayloc1 = chip.getArrayloc1();
-		this.arrayloc2 = chip.getArrayloc1();
-		
-
-		chip.setArrayloc1(temparrayloc1);
-		chip.setArrayloc2(temparrayloc2);
-	}
-	
-	 public boolean equals(Cookies o) {
+	//overriding equals
+	public boolean equals(Cookies o) {
 		 if (this.getType() ==  o.getType()) {
 			 return true;
 		 }
@@ -204,6 +186,7 @@ public class Cookies{
 		  
 	 }
 	 
+	//overiding the to srting
 	 public String toString() {
 		 return this.type + "";
 	 }

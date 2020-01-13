@@ -60,40 +60,6 @@ public class CheckPieces {
 		return false;
 	}
 	
-	/*
-	
-	Following code was not used
-	
-	public static boolean checkRightDiagonal(int[][] board) {
-		for (int i = 0; i < board.length-2; i++) {
-			for (int j = 0; j < board[0].length-2; j++) {
-				if (board[i][j] == board[i+ 1][j + 1] && 
-						board[i][j] == board[i + 2][j + 2]) {
-					return true;
-				}
-				else {
-					continue;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public static boolean checkLeftDiagonal(int[][] board) {
-		for (int i = 0; i < board.length - 2; i++) {
-			for (int j = 2; j < board[0].length; j++) {
-				if (board[i][j] == board[i + 1][j - 1] && 
-						board[i][j] == board[i + 2][j - 2]) {
-					return true;
-				}
-				else {
-					continue;
-				}
-			}
-		}
-		return false;
-	}
-	*/
 	
 	/*
 	 * Method to find where the start of the triple is located when it is Horizontal
@@ -148,40 +114,6 @@ public class CheckPieces {
 	}
 	
 	
-	/*
-	 
-	 Following code was not used
-	 
-	public static int[][] RightDiagonal(int[][] board) {
-		for (int i = 0; i < board.length-2; i++) {
-			for (int j = 0; j < board[0].length-2; j++) {
-				if (board[i][j] == board[i+ 1][j + 1] && 
-						board[i][j] == board[i + 2][j + 2]) {
-					return movePiecesRightDiagonal(i, j, board);
-				}
-				else {
-					continue;
-				}
-			}
-		}
-		return board;
-	}
-	
-	public static int[][] LeftDiagonal(int[][] board) {
-		for (int i = 0; i < board.length - 2; i++) {
-			for (int j = 2; j < board[0].length; j++) {
-				if (board[i][j] == board[i + 1][j - 1] && 
-						board[i][j] == board[i + 2][j - 2]) {
-					return movePiecesLeftDiagonal(i, j, board);
-				}
-				else {
-					continue;
-				}
-			}
-		}
-		return board;
-	}
-	*/
 	
 	/*
 	 * Method remove the triple and cause other numbers for "Fall" into their place
@@ -203,6 +135,8 @@ public class CheckPieces {
 			board[0][col + j].getImage();
 		}
 		GamePlay.addScore100();
+		
+		//randomly generating a number of the sound to play
 		int sound = (int)(Math.random()*2) + 1;
 		
 		if(sound == 1) {
@@ -213,6 +147,7 @@ public class CheckPieces {
 			player.play("Sounds/Boop.wav");
 		}
 		
+		//Generting a number and playing one of the various vocal soundtracks
 		int voicesound = (int)(Math.random()*4) + 1;
 		if (voicesound == 1) {
 			player.play("Sounds/Awesome.wav");
@@ -246,7 +181,10 @@ public class CheckPieces {
 			board[0][col].setType((int)(Math.random()*5) + 1);
 			board[0][col].getImage();
 		}
+		//adding the score to the scroeboard
 		GamePlay.addScore100();
+		
+		//Randomly making a number and playing one fo the starting sounds 
 		int sound = (int)(Math.random()*2) + 1;
 		
 		if(sound == 1) {
@@ -257,6 +195,7 @@ public class CheckPieces {
 			player.play("Sounds/Boop.wav");
 		}
 		
+		//Randomly genrating a number and playing one of the vocal tracks for it 
 		int voicesound = (int)(Math.random()*4) + 1;
 		if (voicesound == 1)
 			player.play("Sounds/Awesome.wav");
@@ -271,34 +210,6 @@ public class CheckPieces {
 		return board;
 	}
 	
-	/*
-	 
-	 code was not used
-	 
-	public static int[][] movePiecesRightDiagonal(int row, int col, int[][] board){
-		System.out.println("HI");
-		for (int j = 0; j < 3; j++) {
-			for (int i = row + j; i >= 1; i--) {
-				board[i][col + j] = board[i - 1][col + j];
-			}
-			board[0][col + j] = MainThing.genNum();
-		}
-		
-		return board;
-	}
-	
-	public static int[][] movePiecesLeftDiagonal(int row, int col, int[][] board){
-		System.out.println("HI");
-		for (int j = 0; j < 3; j++) {
-			for (int i = row + j; i >= 1; i--) {
-				board[i][col - j] = board[i - 1][col - j];
-			}
-			board[0][col] = MainThing.genNum();
-		}
-		return board;
-	}
-
-*/
 	
 	/*
 	 * Method to test for a triple
@@ -324,6 +235,7 @@ public class CheckPieces {
 		boolean goAgain = true;
 		while (goAgain) {
 			goAgain = false;
+			// going throug board and mgettign rid of any triples made as a result of the swtich
 			if (CheckPieces.checkHorizontal(board)) {
 				board = CheckPieces.Horizontal(board);
 				goAgain = true;
@@ -333,6 +245,7 @@ public class CheckPieces {
 				goAgain = true;
 			}
 		}
+		//Returning the edited board
 		return board;
 	}
 }
